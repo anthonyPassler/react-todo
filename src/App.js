@@ -1,16 +1,20 @@
 import './App.scss';
 import Header from './components/Header/Header.js'
-import Item from './components/Item/Item.js'
 import ItemList from './components/ItemList/ItemList.js'
+import AddItem from './components/AddItem/AddItem.js'
 import React, { useState } from 'react';
 
 const App = () => {
-  const [todo, setTodo] = useState(["Wash-up", "Cook Dinner", "work-out"]);
+  const [todo, setTodo] = useState([]);
+
+  const handleTodoState = (item) => {
+    setTodo([...todo, item])
+  }
 
   return (
     <div className="banner">
       <Header headline="TODO"/>
-      <Item todo={"Cook dinner"}/>
+      <AddItem handleTodoState={handleTodoState}/>
       <ItemList todoList={todo}/>
     </div>
   );
